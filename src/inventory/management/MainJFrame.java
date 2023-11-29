@@ -4,13 +4,13 @@
  */
 package inventory.management;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,11 +18,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    private ProductTableModel productTableModel;
+
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        productTableModel = new ProductTableModel();
+        tproduct.setModel(productTableModel);
     }
 
     /**
@@ -50,6 +54,13 @@ public class MainJFrame extends javax.swing.JFrame {
         javax.swing.JButton btndelete = new javax.swing.JButton();
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         tproduct = new javax.swing.JTable();
+        tfsearch = new javax.swing.JTextField();
+        javax.swing.JButton btnsearch = new javax.swing.JButton();
+        javax.swing.JButton btnreset = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        miExit = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Dashboard");
@@ -67,10 +78,10 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/products (2).png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/icons/product.png"))); // NOI18N
         jLabel1.setText("Product list");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Product", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe Print", 1, 18))); // NOI18N
+        jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
         jPanel2.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
@@ -93,7 +104,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel4.setText("Quantity");
 
         btnadd.setFont(new java.awt.Font("Segoe Print", 0, 12)); // NOI18N
-        btnadd.setIcon(new javax.swing.ImageIcon("C:\\Users\\shahy\\Downloads\\plus (1).png")); // NOI18N
+        btnadd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/icons/submit.png"))); // NOI18N
         btnadd.setText("Submit");
         btnadd.setMaximumSize(new java.awt.Dimension(80, 29));
         btnadd.setMinimumSize(new java.awt.Dimension(80, 29));
@@ -105,7 +116,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnclear.setFont(new java.awt.Font("Segoe Print", 0, 12)); // NOI18N
-        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/clear-format.png"))); // NOI18N
+        btnclear.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/icons/clear.png"))); // NOI18N
         btnclear.setText("Clear");
         btnclear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,11 +184,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnclear, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnadd, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
 
         btndelete.setFont(new java.awt.Font("Segoe Print", 0, 12)); // NOI18N
-        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/delete (1).png"))); // NOI18N
+        btndelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/icons/delete.png"))); // NOI18N
         btndelete.setText("Delete");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +215,37 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tproduct);
 
+        tfsearch.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
+        tfsearch.setText("Product name");
+        tfsearch.setToolTipText("");
+        tfsearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tfsearch.setMaximumSize(new java.awt.Dimension(64, 32));
+        tfsearch.setName(""); // NOI18N
+        tfsearch.setPreferredSize(new java.awt.Dimension(64, 32));
+        tfsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfsearchActionPerformed(evt);
+            }
+        });
+
+        btnsearch.setFont(new java.awt.Font("Segoe Print", 0, 12)); // NOI18N
+        btnsearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/icons/search.png"))); // NOI18N
+        btnsearch.setText("Search");
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
+
+        btnreset.setFont(new java.awt.Font("Segoe Print", 0, 12)); // NOI18N
+        btnreset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventory/management/icons/reset.png"))); // NOI18N
+        btnreset.setText("Reset");
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnresetActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -211,19 +253,22 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(687, 687, 687))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
-                                .addContainerGap())))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tfsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnreset)
+                                .addGap(0, 236, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,10 +281,37 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btndelete, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE))))
+                        .addGap(1, 1, 1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btndelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnreset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnsearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE))))
         );
+
+        jMenu3.setText("File");
+
+        jMenuItem1.setText("Import file");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem1);
+
+        miExit.setText("Exit");
+        miExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miExitActionPerformed(evt);
+            }
+        });
+        jMenu3.add(miExit);
+
+        jMenuBar2.add(jMenu3);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,9 +327,70 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfskuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfskuActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-    }//GEN-LAST:event_tfskuActionPerformed
+        FileOperations.saveData("data.bin", productTableModel.getAllProducts());
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        java.util.List<Product> products = FileOperations.loadData("data.bin");
+        if (products != null) {
+            for (Product product : products) {
+                productTableModel.addProduct(product);
+            }
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void miExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miExitActionPerformed
+        // TODO add your handling code here:
+        // Replicating the logic from windowClosing
+        FileOperations.saveData("data.bin", productTableModel.getAllProducts());
+        this.dispose(); // This will close the JFrame
+    }//GEN-LAST:event_miExitActionPerformed
+
+    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnresetActionPerformed
+        // TODO add your handling code here:
+        tproduct.setModel(productTableModel);
+    }//GEN-LAST:event_btnresetActionPerformed
+
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        String search = tfsearch.getText().toLowerCase(); // Convert to lowercase for case-insensitive search
+
+        List<Product> matchingProductList = new ArrayList<>();
+
+        for (Product product : productTableModel.getAllProducts()) {
+            if (product.getName().toLowerCase().contains(search)) {
+                matchingProductList.add(product);
+            }
+        }
+
+        ProductTableModel searchedProductsModel = new ProductTableModel();
+        for (Product product : matchingProductList) {
+            searchedProductsModel.addProduct(product);
+        }
+
+        // Update the existing JTable with the new model
+        tproduct.setModel(searchedProductsModel);
+    }//GEN-LAST:event_btnsearchActionPerformed
+
+    private void tfsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfsearchActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        int row = tproduct.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "No row is selected. Please select one row", "Select row!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            productTableModel.removeProduct(row);
+        }
+    }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void tfnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfnameActionPerformed
 
     private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
         // TODO add your handling code here:
@@ -265,90 +398,62 @@ public class MainJFrame extends javax.swing.JFrame {
         tfsku.setText("");
         cbcat.setSelectedItem("<Default>");
         spq.setValue(0);
-        
+
     }//GEN-LAST:event_btnclearActionPerformed
 
-    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
-        // TODO add your handling code here:
-        int row = tproduct.getSelectedRow();
-        
-        if(row<0){
-            JOptionPane.showMessageDialog(this,"No row is selected ,Please select one row",
-                                                "Select row!",JOptionPane.ERROR_MESSAGE);
-        } else{
-            DefaultTableModel model = (DefaultTableModel) tproduct.getModel();
-            model.removeRow(row);
-        }
-    }//GEN-LAST:event_btndeleteActionPerformed
-
-    
     private void btnaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddActionPerformed
-        // TODO add your handling code here:
         String name = tfname.getText();
         String sku = tfsku.getText();
-        String category = (String)cbcat.getSelectedItem();
-        int quantity = (Integer)spq.getValue();
-        
-        if(name.isEmpty()|| sku.isEmpty()|| category.equals("<Default>") || quantity == 0){
-            JOptionPane.showMessageDialog(this,"Please enter all fields",
-                                                "Try again !",
-                                                JOptionPane.ERROR_MESSAGE);
-        } else{
-           DefaultTableModel model = (DefaultTableModel) tproduct.getModel();
-           model.addRow(new Object[]{name,sku,category,quantity});
-           
-           tfname.setText("");
-           tfsku.setText("");
-           cbcat.setSelectedItem("<Default>");
-           spq.setValue(0);
+        String category = (String) cbcat.getSelectedItem();
+        int quantity = (Integer) spq.getValue();
+
+        if (name.isEmpty() || sku.isEmpty() || category.equals("<Default>") || quantity == 0) {
+            JOptionPane.showMessageDialog(this, "Please enter all fields", "Try again!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Product product = new Product(name, sku, category, quantity);
+            productTableModel.addProduct(product);
+
+            tfname.setText("");
+            tfsku.setText("");
+            cbcat.setSelectedItem("<Default>");
+            spq.setValue(0);
         }
     }//GEN-LAST:event_btnaddActionPerformed
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+    private void tfskuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfskuActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tproduct.getModel();
-        Vector<Vector> tableData = model.getDataVector();
-        
-        //Saving the objects in the file
-        try {
-        FileOutputStream file = new FileOutputStream("data.bin");
-        ObjectOutputStream output = new ObjectOutputStream(file);
-        // method for serialization of objects
-        output.writeObject(tableData);
-        output.close(); // Always close the stream after use
-        } catch (Exception ex) {
-        ex.printStackTrace();
+    }//GEN-LAST:event_tfskuActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        int returnValue = fileChooser.showOpenDialog(this);
+
+        if (returnValue == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            
+             String filePath = selectedFile.getAbsolutePath();
+
+            // Call the readDataFromCSV method from the FileOperations class
+            List<String[]> data = FileOperations.readDataFromCSV(filePath);
+
+            // Iterate through the data and add products to the table model
+            for (String[] fields : data) {
+                String name = fields[0];
+                String sku = fields[1];
+                String category = fields[2];
+                int quantity = Integer.parseInt(fields[3]);
+
+                // Create a new Product instance
+                Product importedProduct = new Product(name, sku, category, quantity);
+
+                // Add the product to the table model
+                productTableModel.addProduct(importedProduct);
             }
 
-    }//GEN-LAST:event_formWindowClosing
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try{
-            FileInputStream file = new FileInputStream("data.bin");
-            ObjectInputStream input = new ObjectInputStream(file);
-            //method for deserialization
-            Vector<Vector> tableData = (Vector<Vector>)input.readObject();
-            input.close();
-            file.close();
-            
-            DefaultTableModel model = (DefaultTableModel) tproduct.getModel();
-            for(int i = 0; i<tableData.size();i++){
-                Vector row = tableData.get(i);
-                model.addRow(new Object[]{row.get(0),
-                                          row.get(1),
-                                          row.get(2),
-                                          row.get(3)});
-            }
-            
-        }catch (Exception ex) {
-           ex.printStackTrace();
-          }
-        
-    }//GEN-LAST:event_formWindowOpened
-
-    private void tfnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfnameActionPerformed
+            // Set the model of tproduct to the productTableModel
+            tproduct.setModel(productTableModel);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -384,11 +489,15 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbcat;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem miExit;
     private javax.swing.JSpinner spq;
     private javax.swing.JTextField tfname;
+    private javax.swing.JTextField tfsearch;
     private javax.swing.JTextField tfsku;
     private javax.swing.JTable tproduct;
     // End of variables declaration//GEN-END:variables

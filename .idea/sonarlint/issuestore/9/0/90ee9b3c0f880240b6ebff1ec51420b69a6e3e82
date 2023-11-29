@@ -1,0 +1,98 @@
+
+l
+java:S1192Í"IDefine a constant instead of duplicating this literal "data.bin" 3 times.(¹²èïüÿÿÿÿ8ÂÃÿ¾Á1
+j
+java:S1192O"MDefine a constant instead of duplicating this literal "Segoe Print" 14 times.(ÄÍ›8ÂÃÿ¾Á1
+l
+java:S1192e"JDefine a constant instead of duplicating this literal "<Default>" 4 times.(ĞúÇçÿÿÿÿÿ8ÂÃÿ¾Á1
+o
+java:S1192X"MDefine a constant instead of duplicating this literal "Product name" 3 times.(–•á·ÿÿÿÿÿ8ÂÃÿ¾Á1
+J
+java:S1604\"(Make this anonymous inner class a lambda(Å¤úÿÿÿÿ8ÒÃÿ¾Á1
+J
+java:S1604p"(Make this anonymous inner class a lambda(ÓæÀòùÿÿÿÿ8ÒÃÿ¾Á1
+D
+java:S1604y"(Make this anonymous inner class a lambda(ë˜Œr8ÒÃÿ¾Á1
+K
+java:S1604„"(Make this anonymous inner class a lambda(ÕÂóÚıÿÿÿÿ8ÒÃÿ¾Á1
+F
+java:S1604Á"(Make this anonymous inner class a lambda(µ”ÿÎ8ÒÃÿ¾Á1
+K
+java:S1604á"(Make this anonymous inner class a lambda(¨ÖÉÿÿÿÿÿ8ÒÃÿ¾Á1
+K
+java:S1604ê"(Make this anonymous inner class a lambda( áûüùÿÿÿÿ8ÒÃÿ¾Á1
+F
+java:S1604ó"(Make this anonymous inner class a lambda(÷ïµã8ÒÃÿ¾Á1
+K
+java:S1604©"(Make this anonymous inner class a lambda(„±ÓÎùÿÿÿÿ8ÒÃÿ¾Á1
+F
+java:S1604±"(Make this anonymous inner class a lambda(‚èèş8ÒÃÿ¾Á1
+K
+java:S1604æ"(Make this anonymous inner class a lambda(¨í¡§úÿÿÿÿ8ï‡¿Á1
+s
+java:S1450î"URemove the "jMenu3" field and declare it as a local variable in the relevant methods.(ƒŞøõ8«Æÿ¾Á1
+{
+java:S1450ï"XRemove the "jMenuBar2" field and declare it as a local variable in the relevant methods.(˜ƒ«ÿÿÿÿÿ8«Æÿ¾Á1
+v
+java:S1450ğ"YRemove the "jMenuItem1" field and declare it as a local variable in the relevant methods.(Éíå48«Æÿ¾Á1
+s
+java:S1450ñ"URemove the "miExit" field and declare it as a local variable in the relevant methods.(¤’›¡8«Æÿ¾Á1
+\
+java:S1161E":Add the "@Override" annotation above this method signature(¦³±ÿÿÿÿÿ8ûÆÿ¾Á1
+W
+java:S1161H":Add the "@Override" annotation above this method signature(œúüæ8ûÆÿ¾Á1
+]
+java:S1161Ô":Add the "@Override" annotation above this method signature(ÍŸÏ†ùÿÿÿÿ8ªÇÿ¾Á1
+G
+java:S1172Ë"*Remove this unused method parameter "evt".(³à¿h8ÉÇÿ¾Á1
+U
+java:S1135Ì"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8ÙÇÿ¾Á1
+M
+java:S1172Ğ"*Remove this unused method parameter "evt".(÷Ü¦ßúÿÿÿÿ8ÙÇÿ¾Á1
+M
+java:S1172Ù"*Remove this unused method parameter "evt".(õ§Ãêÿÿÿÿÿ8éÇÿ¾Á1
+U
+java:S1135Ú"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8éÇÿ¾Á1
+H
+java:S1172à"*Remove this unused method parameter "evt".(†„óÜ8éÇÿ¾Á1
+U
+java:S1135á"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8éÇÿ¾Á1
+M
+java:S1172å"*Remove this unused method parameter "evt".(ãï»üÿÿÿÿ8éÇÿ¾Á1
+M
+java:S1172ù"*Remove this unused method parameter "evt".(¹ÇÁÎúÿÿÿÿ8éÇÿ¾Á1
+U
+java:S1135ú"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8éÇÿ¾Á1
+H
+java:S1172ı"*Remove this unused method parameter "evt".(†çÖÜ8éÇÿ¾Á1
+U
+java:S1135ş"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8éÇÿ¾Á1
+M
+java:S1172‡"*Remove this unused method parameter "evt".(äí²øüÿÿÿÿ8éÇÿ¾Á1
+U
+java:S1135ˆ"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8éÇÿ¾Á1
+H
+java:S1172‹"*Remove this unused method parameter "evt".(Ä—Äˆ8éÇÿ¾Á1
+U
+java:S1135Œ"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8øÇÿ¾Á1
+M
+java:S1172”"*Remove this unused method parameter "evt".(ï•§Ûøÿÿÿÿ8øÇÿ¾Á1
+H
+java:S1172§"*Remove this unused method parameter "evt".(å…„Š8ˆÈÿ¾Á1
+U
+java:S1135¨"2Complete the task associated to this TODO comment.(ÜÀ†áûÿÿÿÿ8ˆÈÿ¾Á1
+H
+java:S1172«"*Remove this unused method parameter "evt".(ÆÀÁ8ˆÈÿ¾Á1
+M
+java:S1197Í"*Move the array designators [] to the type.(¡şÏÖøÿÿÿÿ8ˆÈÿ¾Á1
+c
+java:S2147Ü"ECombine this catch with the one at line 474, which has the same body.(¨¦Š½8˜Èÿ¾Á1
+c
+java:S2147Ş"ECombine this catch with the one at line 476, which has the same body.(ã€ 8˜Èÿ¾Á1
+b
+java:S2147à"ECombine this catch with the one at line 478, which has the same body.(ñÎ¯%8˜Èÿ¾Á1
+k	java:S100ù"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù¾èƒ8§Èÿ¾Á1
+I
+java:S1172ù"+Remove this unused method parameter "file".(Ù¾èƒ8§Èÿ¾Á1
+U
+java:S1144ù"7Remove this unused private "ObjectOutputStream" method.(Ù¾èƒ8§Èÿ¾Á1

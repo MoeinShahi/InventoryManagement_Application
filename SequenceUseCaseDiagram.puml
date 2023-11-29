@@ -1,11 +1,50 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+!define RECTANGLE class
 
-autonumber
+participant "MainJFrame" as MainJFrame
+participant "ProductTableModel" as ProductTableModel
+participant "FileOperations" as FileOperations
+participant "Product" as Product
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+MainJFrame -> ProductTableModel: + MainJFrame()
+activate ProductTableModel
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+MainJFrame -> FileOperations: + loadData(filename: String): List<Product>
+activate FileOperations
+FileOperations --> MainJFrame: List<Product>
+deactivate FileOperations
+
+MainJFrame -> ProductTableModel: + addProduct(product: Product): void
+activate ProductTableModel
+ProductTableModel -> Product: + Product(name: String, sku: String, category: String, quantity: int)
+activate Product
+Product --> ProductTableModel:
+deactivate Product
+
+ProductTableModel --> MainJFrame:
+deactivate ProductTableModel
+
+MainJFrame --> MainJFrame: Display products in the table
+MainJFrame --> MainJFrame: Initialize GUI components
+MainJFrame --> MainJFrame: Set up event listeners
+
+MainJFrame -> MainJFrame: setVisible(true)
+
+MainJFrame --> MainJFrame: Display the main frame
+
+MainJFrame -> ProductTableModel: + formWindowOpened(evt: WindowEvent): void
+activate ProductTableModel
+ProductTableModel -> ProductTableModel: + getAllProducts(): List<Product>
+activate ProductTableModel
+ProductTableModel --> ProductTableModel: Return List<Product>
+deactivate ProductTableModel
+ProductTableModel --> MainJFrame: List<Product>
+deactivate ProductTableModel
+
+MainJFrame -> MainJFrame: Update the table with products
+MainJFrame -> MainJFrame: Set up window event listeners
+
+MainJFrame -> MainJFrame: formWindowOpened event completed
+deactivate MainJFrame
+
 @enduml

@@ -1,27 +1,60 @@
 @startuml
-'https://plantuml.com/class-diagram
+!define RECTANGLE class
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+RECTANGLE ProductTableModel {
+  - products: List<Product>
+  + ProductTableModel()
+  + addProduct(product: Product): void
+  + removeProduct(rowIndex: int): void
+  + getProduct(rowIndex: int): Product
+  + getAllProducts(): List<Product>
+  + isCellEditable(row: int, column: int): boolean
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+RECTANGLE FileOperations {
+  + saveData(filename: String, products: List<Product>): void
+  + loadData(filename: String): List<Product>
+  + readDataFromCSV(filePath: String): List<String[]>
 }
 
+RECTANGLE MainJFrame {
+  - productTableModel: ProductTableModel
+  + MainJFrame()
+  + formWindowClosing(evt: WindowEvent): void
+  + formWindowOpened(evt: WindowEvent): void
+  + miExitActionPerformed(evt: ActionEvent): void
+  + btnresetActionPerformed(evt: ActionEvent): void
+  + btnsearchActionPerformed(evt: ActionEvent): void
+  + tfsearchActionPerformed(evt: ActionEvent): void
+  + btndeleteActionPerformed(evt: ActionEvent): void
+  + tfnameActionPerformed(evt: ActionEvent): void
+  + btnclearActionPerformed(evt: ActionEvent): void
+  + btnaddActionPerformed(evt: ActionEvent): void
+  + tfskuActionPerformed(evt: ActionEvent): void
+  + jMenuItem1ActionPerformed(evt: ActionEvent): void
+}
+
+RECTANGLE Product {
+  - name: String
+  - sku: String
+  - category: String
+  - quantity: int
+  + Product(name: String, sku: String, category: String, quantity: int)
+  + getName(): String
+  + setName(name: String): void
+  + getSku(): String
+  + setSku(sku: String): void
+  + getCategory(): String
+  + setCategory(category: String): void
+  + getQuantity(): int
+  + setQuantity(quantity: int): void
+}
+
+MainJFrame --|> javax.swing.JFrame
+MainJFrame *-- ProductTableModel
+MainJFrame *-- FileOperations
+MainJFrame *--|> javax.swing.JPanel
+Product --|> java.io.Serializable
+ProductTableModel *-- Product
+FileOperations *-- Product
 @enduml

@@ -5,8 +5,6 @@ a
 1src/inventory/management/InventoryManagement.java,b\a\baffb009341aab73161f188d5c5ab01a8e0d9653
 a
 1test/inventory/management/FileOperationsTest.java,4\3\43c1f51c6b79df69937ff3c05333f7ea6427510c
-X
-(test/inventory/management/BasicTest.java,6\a\6a3e152d7254847739f0d74a556c9735e90cdb33
 \
 ,src/inventory/management/FileOperations.java,e\1\e1f2219566b52bdb878926864a00c43c706be188
 X
@@ -21,3 +19,21 @@ A
 ClassDiagram.puml,1\0\102b506b265ff82046ef63ed9b42ce090a5a4a68
 K
 SequenceUseCaseDiagram.puml,b\5\b5daf8949af3199afc032c2c557e0203e563a1ba
+Z
+*test/inventory/management/ProductTest.java,6\7\67dcaa8d002ad5260eff3695788585497d55cc7e
+9
+	build.xml,b\d\bdc348bf75801c527f51cdeddc8edf027f7ef35a
+J
+lib/nblibraries.properties,b\2\b2ffb1ca6373cef04ab96c2af98b92c73c02fc3b
+H
+nbproject/build-impl.xml,0\8\08e98e1c68147fb1ea8657037678d342b5a09cd8
+L
+nbproject/project.properties,0\e\0e101418588c1d63f873408509f6b7c7358a41ec
+M
+nbproject/genfiles.properties,8\5\85d559b438fd4915873f371dcfe48a06bd993c18
+C
+nonexistentfile.dat,a\d\ad115c4e17384bde09e181b5beec9ac7456acd87
+E
+nbproject/project.xml,8\0\80da317e63b4bda3df77cdf6f56dad6f1e658f84
+d
+4test/inventory/management/ProductTableModelTest.java,3\a\3a1236c2ac2c2b4165e27d2bd348c81a53e84d09
