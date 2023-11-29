@@ -1,0 +1,23 @@
+
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+a
+1src/inventory/management/InventoryManagement.java,b\a\baffb009341aab73161f188d5c5ab01a8e0d9653
+a
+1test/inventory/management/FileOperationsTest.java,4\3\43c1f51c6b79df69937ff3c05333f7ea6427510c
+X
+(test/inventory/management/BasicTest.java,6\a\6a3e152d7254847739f0d74a556c9735e90cdb33
+\
+,src/inventory/management/FileOperations.java,e\1\e1f2219566b52bdb878926864a00c43c706be188
+X
+(src/inventory/management/MainJFrame.java,9\0\90ee9b3c0f880240b6ebff1ec51420b69a6e3e82
+X
+(src/inventory/management/MainJFrame.form,5\7\5788378c6c7833181e4fe25ee263356215ac5030
+U
+%src/inventory/management/Product.java,7\3\739217d5453371588b5405f91c70d08dd2145f81
+_
+/src/inventory/management/ProductTableModel.java,7\4\747635c492db1b937d5d96897eabf2b86076c7a2
+A
+ClassDiagram.puml,1\0\102b506b265ff82046ef63ed9b42ce090a5a4a68
+K
+SequenceUseCaseDiagram.puml,b\5\b5daf8949af3199afc032c2c557e0203e563a1ba
