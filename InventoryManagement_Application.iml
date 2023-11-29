@@ -8,7 +8,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="junit_5" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="testng">
         <CLASSES>
@@ -34,7 +33,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="junit-4.12" level="application" />
+    <orderEntry type="library" name="junit-4.12" level="project" />
   </component>
   <component name="SonarLintModuleSettings">
     <option name="uniqueId" value="43f91c5f-6395-4fcd-b589-117c58531277" />
